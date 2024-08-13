@@ -16,11 +16,6 @@ function getHumanChoice() {
     return humanElection;
 }
 
-
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
-console.log("the human choise is = " + humanSelection);
-console.log("The computer choice is : " + computerSelection);
 function playRound(humanChoice, computerSelection) {
     humanChoice = humanChoice.toUpperCase();
     computerSelection = computerSelection.toUpperCase();
@@ -42,30 +37,36 @@ function playRound(humanChoice, computerSelection) {
     }
 
 }
-function playGame(humanSelection, computerSelection) {
+function playGame() {
     let output;
     let humanScore = 0;
     let computerScore = 0;
+    let humanSelection;
+    let computerSelection;
     for (let i = 0; i < 5; i++) {
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+        console.log("the human choise is = " + humanSelection);
+        console.log("The computer choice is : " + computerSelection);
         output = playRound(humanSelection, computerSelection);
         console.log("the result is " + output);
-        if (output === "You win!!, Paper beats Rock" || output === "You win!!, Rock beats Scissors" || output === "You win!!,Scissors beats Paper") {
+        if (output === "You win!, Scissors beats Paper" || output === "You win!, Rock beatS Scissors" || output === "You win!, Paper beats Rock") {
             humanScore++;
-        } else if (output === "Tie!") {
+        } else if (output === "Tie!!") {
 
         } else {
             computerScore++;
         }
     }
-    if(humanScore>computerScore){
-      return  console.log("YOU WIN!!");
-    }else if(humanScore<computerScore){
-       return console.log("You lose :c");
+    if (humanScore > computerScore) {
+        return console.log("YOU WIN!!");
+    } else if (humanScore < computerScore) {
+        return console.log("You lose :c");
 
-    }else{
-       return console.log("It's a Tie");
+    } else {
+        return console.log("It's a Tie");
     }
 
 
 }
-playGame(humanSelection,computerSelection);
+playGame();
